@@ -1,6 +1,12 @@
 import { Product, Colour } from './../../types';
+import {
+  LOAD_PRODUCTS_INIT,
+  LOAD_PRODUCTS_SUCCESS,
+  LoadProductsActionTypes
+} from './../../actions/products/types';
 
-interface ProductState {
+
+export interface ProductState {
   items: Product[];
   filters: {
     colour: Colour[]
@@ -23,6 +29,20 @@ const initialState : ProductState = {
   isLoading: false
 };
 
-export default function products(state = initialState, action: any) {
+export default function products(state = initialState, action: LoadProductsActionTypes) {
+  if (action.type === LOAD_PRODUCTS_INIT) {
+    return {
+      ...state,
+      isLoading: true
+    };
+  }
+
+  if (action.type === LOAD_PRODUCTS_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      items: action.payload
+    };
+  }
   return state;
 };

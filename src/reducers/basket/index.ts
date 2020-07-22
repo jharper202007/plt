@@ -1,4 +1,4 @@
-interface BasketState {
+export interface BasketState {
   items: any[], // @TODO create basket item type
   total: number
 }
