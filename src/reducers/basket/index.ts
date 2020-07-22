@@ -8,6 +8,6 @@ const initialState : BasketState = {
   total: 0
 };
 
-export default function filters(state = initialState, action: any) {
+export default function filters(state = initialState, action: any) : BasketState {
   return state;
 };

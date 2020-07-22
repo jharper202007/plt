@@ -29,7 +29,7 @@ const initialState : ProductState = {
   isLoading: false
 };
 
-export default function products(state = initialState, action: LoadProductsActionTypes) {
+export default function products(state = initialState, action: LoadProductsActionTypes) : ProductState {
   if (action.type === LOAD_PRODUCTS_INIT) {
     return {
       ...state,
