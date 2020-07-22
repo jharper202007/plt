@@ -1,8 +1,8 @@
-const initialState = {
-  products: [],
-  filters: [],
-};
+import { combineReducers } from 'redux';
+import products from './products';
+import basket from './basket';
 
-export default (state = initialState, action: any) => {
-  return state;
-};
+export default combineReducers({
+  products,
+  basket
+});
