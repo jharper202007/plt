@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { loadProducts } from './../../../actions/products';
 import { addToBasket, removeFromBasket } from './../../../actions/basket';
+import { applyColourFilter } from './../../../helpers/products';
 import ColourFilter from '../../Products/ColourFilter';
 import ProductsListItem from '../../Products/ProductsListItem';
 import ProductListSelector from './selector';
@@ -45,8 +46,7 @@ const ProductListingPage = () => {
     );
   }
 
-  const visibleProducts =
-    filter ? products.filter(product => product.colour === filter) : products;
+  const visibleProducts = applyColourFilter(products, filter);
 
   return (
     <>
