@@ -44,7 +44,7 @@ export const loadProducts = () => async (dispatch: Dispatch) => {
   try {
     const res = await axios.get(PRODUCTS_ENDPOINT);
     return dispatch(loadProductsSuccess(res.data));
-  } catch(err) {
+  } catch (err) {
     return dispatch(loadProductsError(err.message));
   }
 }

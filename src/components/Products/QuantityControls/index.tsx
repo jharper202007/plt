@@ -13,18 +13,26 @@ export interface QuantityControlsProps {
 const QuantityControls = (props : QuantityControlsProps) => {
   const { id, price } = props.product;
   const dispatch = useDispatch();
-  const basketData = useSelector((state: AppState) => basketDataSelector(state, props));
+  const basketData = useSelector(
+    (state: AppState) => basketDataSelector(state, props)
+  );
 
   const quantity = basketData ? basketData.quantity : 0;
 
-  const add = () => dispatch(addToBasket(id, 1, price));
-  const remove = () => dispatch(removeFromBasket(id, 1, price));
+  const increment = () => dispatch(addToBasket(id, 1, price));
+  const decrement = () => dispatch(removeFromBasket(id, 1, price));
   const removeAll = () => dispatch(removeFromBasket(id, quantity, price));
 
   return (
     <div className="row h-100 align-items-center">
       <div className="col">
-        <button className="btn btn-default" onClick={remove} disabled={quantity === 0}>-</button>
+        <button
+          className="btn btn-default"
+          onClick={decrement}
+          disabled={quantity === 0}
+        >
+          -
+        </button>
       </div>
       <div className="col text-center">
         <div>{quantity}</div>
@@ -33,7 +41,12 @@ const QuantityControls = (props : QuantityControlsProps) => {
         )}
       </div>
       <div className="col">
-        <button className="btn btn-default" onClick={add}>+</button>
+        <button
+          className="btn btn-default"
+          onClick={increment}
+        >
+          +
+        </button>
       </div>
     </div>
   );

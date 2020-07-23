@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Product } from '../../../types';
-
 import QuantityControls from '../QuantityControls';
 
 export interface ProductsListItemProps {

@@ -1,4 +1,4 @@
-import { Product, Colour, ProductFilterTypes, ProductFilterValues } from './../../types';
+import { Product, Colour } from './../../types';
 import {
   LOAD_PRODUCTS_INIT,
   LOAD_PRODUCTS_SUCCESS,
@@ -19,13 +19,6 @@ export interface ProductState {
 
 const initialState : ProductState = {
   items: [],
-  /*
-   * Initial filter design: values get pushed to arrays of pre-defined types to
-   * apply filters. (eg { colour: ['Black'], size: ['Small', 'XS']}).
-   * Empty array means no filters are applied.
-   *
-   * May adjust slightly later, but should work for now.
-   */
   filters: {
     colour: undefined,
   },

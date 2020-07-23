@@ -11,12 +11,22 @@ export enum Colour {
   Stone = 'Stone',
   Red = 'Red'
 }
-export type ProductFilterTypes = 'colour';
+
+export const colours : Colour[] = Object.values(Colour);
+
+export function isColour(value: string): value is Colour {
+  return colours.includes(value as Colour);
+}
+
+export enum ProductFilterTypes {
+  Colour = 'colour'
+}
+
 export type ProductFilterValues = Colour;
 
 export interface Filter {
   type: ProductFilterTypes;
-  value: ProductFilterValues;
+  value?: ProductFilterValues;
 }
 
 export interface BasketItemData {

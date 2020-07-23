@@ -1,4 +1,4 @@
-import { Product, Filter, ProductFilterTypes } from '../../types';
+import { Product, Filter } from '../../types';
 
 export const LOAD_PRODUCTS_INIT = 'LOAD_PRODUCTS/INIT';
 export const LOAD_PRODUCTS_SUCCESS = 'LOAD_PRODUCTS/SUCCESS';
@@ -32,9 +32,7 @@ interface ApplyProductFilterAction {
 
 interface ResetProductFilterAction {
   type: typeof RESET_PRODUCT_FILTER,
-  payload: {
-    type: ProductFilterTypes
-  }
+  payload: Filter
 }
 
 export type ProductFilterActionTypes = (

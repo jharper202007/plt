@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Product } from './../../../types';
+
 import { loadProducts } from './../../../actions/products';
 import ProductsListItem from '../ProductsListItem';
 import ProductListSelector from './selector';
 
 const ProductsList = () => {
   const dispatch = useDispatch();
-  const {products, isLoading, filter} = useSelector(ProductListSelector);
+  const { products, isLoading, filter } = useSelector(ProductListSelector);
 
   useEffect(() => {
     dispatch(loadProducts());
@@ -19,7 +19,8 @@ const ProductsList = () => {
     );
   }
 
-  const visibleProducts = filter ? products.filter(product => product.colour === filter) : products;
+  const visibleProducts =
+    filter ? products.filter(product => product.colour === filter) : products;
 
   return (
     <div className="col">

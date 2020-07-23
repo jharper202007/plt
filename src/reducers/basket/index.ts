@@ -28,7 +28,6 @@ export default function filters(state = initialState, action: BasketActionTypes)
 
       const existingItem = state.items[productId];
       const isAlreadyInBasket = existingItem !== undefined;
-      // Update quantity if item is already in basket
       const updatedQuantity = isAlreadyInBasket ? (quantity + existingItem.quantity) : quantity
 
       return {
@@ -46,28 +45,29 @@ export default function filters(state = initialState, action: BasketActionTypes)
       const { productId, quantity, price } = action.payload;
 
       const existingItem = state.items[productId];
-      const isAlreadyInBasket = existingItem !== undefined;
 
       // Nothing to remove
-      if (!isAlreadyInBasket) {
+      if (existingItem === undefined) {
         return state;
       }
 
-      // @TODO: Validation to prevent quantity going below zero
-      const updatedQuantity = existingItem.quantity - quantity;
+      const isRemovingAll = quantity >= existingItem.quantity;
+      const priceDeduction = isRemovingAll
+        ? price * existingItem.quantity
+        : price * quantity;
+      const newTotal = state.total - priceDeduction;
+
       const newItems = {
         ...state.items,
         [productId]: {
-          quantity: updatedQuantity,
+          quantity: existingItem.quantity - quantity,
           price
         }
       };
 
-      if (updatedQuantity <= 0) {
+      if (isRemovingAll) {
         delete newItems[productId];
       }
-
-      const newTotal = state.total - (quantity * price);
 
       return {
         total: (newTotal > 0) ?  newTotal : 0,
