@@ -30,19 +30,21 @@ const initialState : ProductState = {
 };
 
 export default function products(state = initialState, action: LoadProductsActionTypes) : ProductState {
-  if (action.type === LOAD_PRODUCTS_INIT) {
-    return {
-      ...state,
-      isLoading: true
-    };
-  }
-
-  if (action.type === LOAD_PRODUCTS_SUCCESS) {
-    return {
-      ...state,
-      isLoading: false,
-      items: action.payload
-    };
-  }
-  return state;
+  switch (action.type) {
+    case LOAD_PRODUCTS_INIT: {
+      return {
+        ...state,
+        isLoading: true
+      };
+    }
+    case LOAD_PRODUCTS_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+        items: action.payload
+      };
+    }
+    default:
+      return state;
+  };
 };

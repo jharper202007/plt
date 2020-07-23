@@ -11,3 +11,12 @@ export enum Colour {
   Stone = 'Stone',
   Red = 'Red'
 }
+
+export interface BasketItemData {
+  quantity: number;
+  price: number;
+}
+
+export interface BasketItem extends BasketItemData {
+  productId: number;
+}
