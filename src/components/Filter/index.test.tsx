@@ -8,7 +8,7 @@ describe('Filter tests', () => {
   it('renders all of the expected options', () => {
     const colours = [Colour.Black, Colour.Red];
     const component = render(
-      <Filter options={colours} />
+      <Filter options={colours} onChange={()=>{}} />
     );
 
     const options = component.getAllByRole('option');
