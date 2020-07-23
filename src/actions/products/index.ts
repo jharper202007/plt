@@ -5,11 +5,17 @@ import {
   LOAD_PRODUCTS_INIT,
   LOAD_PRODUCTS_ERROR,
   LOAD_PRODUCTS_SUCCESS,
-  LoadProductsActionTypes
+  LoadProductsActionTypes,
+  APPLY_PRODUCT_FILTER,
+  REMOVE_PRODUCT_FILTER,
+  ProductFilterActionTypes
 } from './types';
 
-import { Product } from '../../types';
+import { Product, ProductFilterTypes, ProductFilterValues } from '../../types';
 
+// Would probably separate into base_api_url + products_endpoint
+// if there were more endpoints, but since this is the only one
+// will just keep it simple
 const PRODUCTS_ENDPOINT = 'https://my-json-server.typicode.com/benirvingplt/products/products';
 
 function loadProductsInit() : LoadProductsActionTypes {
@@ -41,4 +47,24 @@ export const loadProducts = () => async (dispatch: Dispatch) => {
   } catch(err) {
     return dispatch(loadProductsError(err.message));
   }
+}
+
+export function applyFilter(type: ProductFilterTypes, value: ProductFilterValues) : ProductFilterActionTypes {
+  return {
+    type: APPLY_PRODUCT_FILTER,
+    payload: {
+      type,
+      value
+    }
+  };
+}
+
+export function removeFilter(type: ProductFilterTypes, value: ProductFilterValues) : ProductFilterActionTypes {
+  return {
+    type: REMOVE_PRODUCT_FILTER,
+    payload: {
+      type,
+      value
+    }
+  };
 }

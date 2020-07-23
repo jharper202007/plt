@@ -12,6 +12,23 @@ export enum Colour {
   Red = 'Red'
 }
 
+// Unused but here to demonstrate what could happen
+// if there were additional types of filters
+export enum Size {
+  Xs = 'Xs',
+  Small = 'Small',
+  Medium = 'Medium',
+  Large = 'Large'
+}
+
+export type ProductFilterTypes = 'colour'|'size';
+export type ProductFilterValues = Colour|Size;
+
+export interface Filter {
+  type: ProductFilterTypes;
+  value: ProductFilterValues;
+}
+
 export interface BasketItemData {
   quantity: number;
   price: number;
