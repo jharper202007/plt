@@ -1,10 +1,9 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { applyFilter, resetFilter } from '../../../actions/products';
 import { Colour, isColour, ProductFilterTypes } from '../../../types';
-
-import colourSelector from './selector';
+import Filter from '../../Filter';
 
 interface ColourFilterProps {
   colours: Colour[];
@@ -12,11 +11,6 @@ interface ColourFilterProps {
 
 const ColourFilter = ({ colours }: ColourFilterProps) => {
   const dispatch = useDispatch();
-  const {selected, shouldShow} = useSelector(colourSelector) || '';
-
-  if (!shouldShow) {
-    return null;
-  }
 
   const onChange = (e: React.ChangeEvent<HTMLSelectElement>) =>  {
     if (isColour(e.target.value)) {
@@ -31,18 +25,8 @@ const ColourFilter = ({ colours }: ColourFilterProps) => {
   };
 
   return (
-    <select className="form-control" onChange={onChange} value={selected}>
-      <option value="">- Show All -</option>
-      {colours.map((colour: Colour) => (
-        <option
-          key={colour}
-          value={colour}
-        >
-          {colour}
-        </option>
-      ))}
-    </select>
-  )
+    <Filter options={colours} onChange={onChange} />
+  );
 };
 
 export default ColourFilter;

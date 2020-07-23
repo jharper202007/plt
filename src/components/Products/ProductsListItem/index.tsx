@@ -5,9 +5,19 @@ import QuantityControls from '../QuantityControls';
 
 export interface ProductsListItemProps {
   product: Product;
+  increment: (productId: number, price: number) => void;
+  decrement: (productId: number, price: number) => void;
+  removeAll: (productId: number) => void;
+  quantityInBasket: number;
 }
 
-const ProductsListItem = ({ product }: ProductsListItemProps) => (
+const ProductsListItem = ({
+  product,
+  increment,
+  decrement,
+  removeAll,
+  quantityInBasket
+}: ProductsListItemProps) => (
   <div className="card mb-1">
     <div className="row">
       <div className="col-2">
@@ -20,7 +30,13 @@ const ProductsListItem = ({ product }: ProductsListItemProps) => (
         </div>
       </div>
       <div className="col-2">
-        <QuantityControls product={product} />
+        <QuantityControls
+          product={product}
+          quantity={quantityInBasket}
+          increment={increment}
+          decrement={decrement}
+          removeAll={removeAll}
+        />
       </div>
     </div>
   </div>
