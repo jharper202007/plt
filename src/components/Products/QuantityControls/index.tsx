@@ -15,17 +15,23 @@ const QuantityControls = (props : QuantityControlsProps) => {
   const dispatch = useDispatch();
   const basketData = useSelector((state: AppState) => basketDataSelector(state, props));
 
+  const quantity = basketData ? basketData.quantity : 0;
+
   const add = () => dispatch(addToBasket(id, 1, price));
   const remove = () => dispatch(removeFromBasket(id, 1, price));
-
-  const quantity = basketData ? basketData.quantity : 0;
+  const removeAll = () => dispatch(removeFromBasket(id, quantity, price));
 
   return (
     <div className="row h-100 align-items-center">
       <div className="col">
         <button className="btn btn-default" onClick={remove} disabled={quantity === 0}>-</button>
       </div>
-      <div className="col">{quantity}</div>
+      <div className="col text-center">
+        <div>{quantity}</div>
+        {quantity > 0 && (
+          <button style={{ fontSize: 10 }} onClick={removeAll}>Remove</button>
+        )}
+      </div>
       <div className="col">
         <button className="btn btn-default" onClick={add}>+</button>
       </div>
