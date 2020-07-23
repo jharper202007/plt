@@ -5,7 +5,7 @@ import {
   BasketActionTypes
 } from './../../actions/basket/types';
 
-import { BasketItem, BasketItemData } from './../../types';
+import { BasketItemData } from './../../types';
 
 interface BasketItemMap {
   [productId: number]: BasketItemData
@@ -17,7 +17,13 @@ export interface BasketState {
 }
 
 const initialState : BasketState = {
-  items: {},
+  items: {
+    // Dummy data, delete later
+    1: {
+      quantity: 2,
+      price: 10
+    }
+  },
   total: 0
 };
 
