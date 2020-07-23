@@ -9,6 +9,7 @@ export default createSelector(
   (products) => ({
     products: products.items,
     isLoading: products.isLoading,
-    filter: products.filters.colour
+    filter: products.filters.colour,
+    error: products.error
   })
 );

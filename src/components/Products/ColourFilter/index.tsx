@@ -12,7 +12,11 @@ interface ColourFilterProps {
 
 const ColourFilter = ({ colours }: ColourFilterProps) => {
   const dispatch = useDispatch();
-  const selected = useSelector(colourSelector) || '';
+  const {selected, shouldShow} = useSelector(colourSelector) || '';
+
+  if (!shouldShow) {
+    return null;
+  }
 
   const onChange = (e: React.ChangeEvent<HTMLSelectElement>) =>  {
     if (isColour(e.target.value)) {

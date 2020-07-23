@@ -2,6 +2,7 @@ import { Product, Colour } from './../../types';
 import {
   LOAD_PRODUCTS_INIT,
   LOAD_PRODUCTS_SUCCESS,
+  LOAD_PRODUCTS_ERROR,
   LoadProductsActionTypes,
   APPLY_PRODUCT_FILTER,
   RESET_PRODUCT_FILTER,
@@ -14,7 +15,8 @@ export interface ProductState {
   filters: {
     colour?: Colour,
   },
-  isLoading: boolean
+  isLoading: boolean,
+  error?: string
 }
 
 const initialState : ProductState = {
@@ -39,7 +41,15 @@ export default function products(state = initialState, action: ProductActionType
       return {
         ...state,
         isLoading: false,
-        items: action.payload
+        items: action.payload,
+        error: undefined
+      };
+    }
+    case LOAD_PRODUCTS_ERROR: {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
       };
     }
     case APPLY_PRODUCT_FILTER: {

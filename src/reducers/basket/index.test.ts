@@ -1,5 +1,3 @@
-import React from 'react';
-
 import reducer, { BasketState } from '.';
 import {
   ADD_TO_BASKET,
