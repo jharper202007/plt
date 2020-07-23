@@ -1,26 +1,29 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppState } from './../../../reducers';
+import { Product } from './../../../types';
 import { loadProducts } from './../../../actions/products';
 import ProductsListItem from '../ProductsListItem';
+import ProductListSelector from './selector';
 
 const ProductsList = () => {
   const dispatch = useDispatch();
-  const products = useSelector((state: AppState) => state.products);
+  const {products, isLoading, filter} = useSelector(ProductListSelector);
 
   useEffect(() => {
     dispatch(loadProducts());
   }, [dispatch]);
 
-  if (products.isLoading) {
+  if (isLoading) {
     return (
       <div>Loading products...</div>
     );
   }
 
+  const visibleProducts = filter ? products.filter(product => product.colour === filter) : products;
+
   return (
     <div className="col">
-      {products.items.map(product => (
+      {visibleProducts.map(product => (
         <ProductsListItem key={product.id} product={product} />
       ))}
     </div>

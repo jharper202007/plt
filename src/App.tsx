@@ -6,7 +6,7 @@ import TotalPrice from './components/Products/TotalPrice/index';
 
 function App() {
   return (
-    <div className="container">
+    <div className="container mt-2">
       <div className="row mb-2">
         <div className="col-4">
           <ColourFilter />
@@ -19,7 +19,9 @@ function App() {
 
       <div className="row">
         <div className="col-2 offset-10">
-          <div className="col-4 offset-4"><TotalPrice/></div>
+          <div className="col-4 offset-4">
+            <TotalPrice/>
+          </div>
         </div>
       </div>
     </div>

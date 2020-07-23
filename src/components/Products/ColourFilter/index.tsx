@@ -29,20 +29,17 @@ const ColourFilter = () => {
   };
 
   return (
-    <div>
-      Filters go here
-      <select className="form-control selectpicker" onChange={onChange} value={selected}>
-        <option value="">- Colour filter -</option>
-        {colours.map((colour: Colour) => (
-          <option
-            key={colour}
-            value={colour}
-          >
-            {colour}
-          </option>
-        ))}
-      </select>
-    </div>
+    <select className="form-control selectpicker" onChange={onChange} value={selected}>
+      <option value="">- Show All -</option>
+      {colours.map((colour: Colour) => (
+        <option
+          key={colour}
+          value={colour}
+        >
+          {colour}
+        </option>
+      ))}
+    </select>
   )
 };
 
