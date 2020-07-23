@@ -5,6 +5,9 @@ import {
   BasketActionTypes
 } from './types';
 
+/*
+ * Basket Actions
+ */
 export function addToBasket(productId: number, quantity: number, price: number) : BasketActionTypes {
   return {
     type: ADD_TO_BASKET,

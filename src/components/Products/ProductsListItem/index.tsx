@@ -5,8 +5,8 @@ import QuantityControls from '../QuantityControls';
 
 export interface ProductsListItemProps {
   product: Product;
-  increment: (productId: number, price: number) => void;
-  decrement: (productId: number, price: number) => void;
+  increment: (productId: number) => void;
+  decrement: (productId: number) => void;
   removeAll: (productId: number) => void;
   quantityInBasket?: number;
 }

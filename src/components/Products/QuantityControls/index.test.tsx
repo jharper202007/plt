@@ -83,13 +83,13 @@ describe('QuantityControls test', () => {
     const [decrementBtn, removeBtn, incrementBtn] = getAllByRole('button');
     fireEvent.click(incrementBtn);
     expect(inc).toHaveBeenCalledTimes(1);
-    expect(inc).toHaveBeenCalledWith(1, 10);
+    expect(inc).toHaveBeenCalledWith(1);
     fireEvent.click(incrementBtn);
     expect(inc).toHaveBeenCalledTimes(2);
 
     fireEvent.click(decrementBtn);
     expect(dec).toHaveBeenCalledTimes(1);
-    expect(dec).toHaveBeenCalledWith(1, 10);
+    expect(dec).toHaveBeenCalledWith(1);
 
     fireEvent.click(removeBtn);
     expect(removeAll).toHaveBeenCalledTimes(1);

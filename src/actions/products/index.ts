@@ -18,6 +18,9 @@ import { Product, ProductFilterTypes, ProductFilterValues } from '../../types';
 // will just keep it simple
 const PRODUCTS_ENDPOINT = 'https://my-json-server.typicode.com/benirvingplt/products/products';
 
+/*
+ * Load Product Actions
+ */
 function loadProductsInit() : LoadProductsActionTypes {
   return {
     type: LOAD_PRODUCTS_INIT
@@ -38,6 +41,9 @@ function loadProductsError(message: string) : LoadProductsActionTypes {
   };
 };
 
+/*
+ * The main function for loading products from API
+ */
 export const loadProducts = () => async (dispatch: Dispatch) => {
   dispatch(loadProductsInit());
 
@@ -49,6 +55,9 @@ export const loadProducts = () => async (dispatch: Dispatch) => {
   }
 }
 
+/*
+ * Product Filter Actions
+ */
 export function applyFilter(type: ProductFilterTypes, value: ProductFilterValues) : ProductFilterActionTypes {
   return {
     type: APPLY_PRODUCT_FILTER,

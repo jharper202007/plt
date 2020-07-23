@@ -14,12 +14,14 @@ const ProductListingPage = () => {
   const dispatch = useDispatch();
   const { products, basket, isLoading, filter, total, error } = useSelector(ProductListSelector);
 
-  const increment = (productId: number, price: number) => {
-    dispatch(addToBasket(productId, 1, price));
+  const increment = (productId: number) => {
+    const product = products.find(product => product.id === productId);
+    dispatch(addToBasket(productId, 1, product ? product.price : 0));
   };
 
-  const decrement = (productId: number, price: number) => {
-    dispatch(removeFromBasket(productId, 1, price));
+  const decrement = (productId: number) => {
+    const product = products.find(product => product.id === productId);
+    dispatch(removeFromBasket(productId, 1, product ? product.price : 0));
   };
 
   const removeAll = (productId: number) => {

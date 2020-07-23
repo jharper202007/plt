@@ -5,16 +5,17 @@ import { Product } from './../../../types';
 export interface QuantityControlsProps {
   product: Product,
   quantity: number;
-  increment: (productId: number, price: number) => void;
-  decrement: (productId: number, price: number) => void;
+  increment: (productId: number) => void;
+  decrement: (productId: number) => void;
   removeAll: (productId: number) => void;
 };
 
 const QuantityControls = (props : QuantityControlsProps) => {
   const { quantity } = props;
-  const { id, price } = props.product;
-  const increment = () => props.increment(id, price);
-  const decrement = () => props.decrement(id, price);
+  const { id } = props.product;
+
+  const increment = () => props.increment(id);
+  const decrement = () => props.decrement(id);
   const removeAll = () => props.removeAll(id);
 
   return (
