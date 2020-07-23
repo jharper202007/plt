@@ -28,8 +28,8 @@ const ProductListingPage = () => {
     dispatch(removeFromBasket(productId, quantity, price));
   };
 
+  // componentDidMount()
   useEffect(() => {
-    // componentDidMount()
     dispatch(loadProducts());
   }, [dispatch]);
 
@@ -41,7 +41,7 @@ const ProductListingPage = () => {
 
   if (error) {
     return (
-      <div>{error}</div>
+      <div className="alert alert-danger">{error}</div>
     );
   }
 
