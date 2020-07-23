@@ -8,7 +8,7 @@ export interface ProductsListItemProps {
   increment: (productId: number, price: number) => void;
   decrement: (productId: number, price: number) => void;
   removeAll: (productId: number) => void;
-  quantityInBasket: number;
+  quantityInBasket?: number;
 }
 
 const ProductsListItem = ({
@@ -16,7 +16,7 @@ const ProductsListItem = ({
   increment,
   decrement,
   removeAll,
-  quantityInBasket
+  quantityInBasket = 0
 }: ProductsListItemProps) => (
   <div className="card mb-1">
     <div className="row">
