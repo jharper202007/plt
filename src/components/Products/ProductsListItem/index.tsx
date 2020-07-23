@@ -12,7 +12,7 @@ const ProductsListItem = ({ product }: ProductsListItemProps) => (
   <div className="card mb-1">
     <div className="row">
       <div className="col-2">
-        <img src={product.img} height={150} width={150} />
+        <img src={product.img} height={150} width={150} alt={product.name} />
       </div>
       <div className="col-8">
         <div className="card-block p-2">

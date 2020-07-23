@@ -11,18 +11,8 @@ export enum Colour {
   Stone = 'Stone',
   Red = 'Red'
 }
-
-// Unused but here to demonstrate what could happen
-// if there were additional types of filters
-export enum Size {
-  Xs = 'Xs',
-  Small = 'Small',
-  Medium = 'Medium',
-  Large = 'Large'
-}
-
-export type ProductFilterTypes = 'colour'|'size';
-export type ProductFilterValues = Colour|Size;
+export type ProductFilterTypes = 'colour';
+export type ProductFilterValues = Colour;
 
 export interface Filter {
   type: ProductFilterTypes;

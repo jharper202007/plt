@@ -7,7 +7,7 @@ import {
   LOAD_PRODUCTS_SUCCESS,
   LoadProductsActionTypes,
   APPLY_PRODUCT_FILTER,
-  REMOVE_PRODUCT_FILTER,
+  RESET_PRODUCT_FILTER,
   ProductFilterActionTypes
 } from './types';
 
@@ -59,12 +59,11 @@ export function applyFilter(type: ProductFilterTypes, value: ProductFilterValues
   };
 }
 
-export function removeFilter(type: ProductFilterTypes, value: ProductFilterValues) : ProductFilterActionTypes {
+export function resetFilter(type: ProductFilterTypes) : ProductFilterActionTypes {
   return {
-    type: REMOVE_PRODUCT_FILTER,
+    type: RESET_PRODUCT_FILTER,
     payload: {
-      type,
-      value
+      type
     }
   };
 }
