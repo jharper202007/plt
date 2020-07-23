@@ -49,6 +49,7 @@ export default function products(state = initialState, action: ProductActionType
       return {
         ...state,
         isLoading: false,
+        items: [],
         error: action.payload
       };
     }
