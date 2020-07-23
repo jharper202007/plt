@@ -17,13 +17,7 @@ export interface BasketState {
 }
 
 const initialState : BasketState = {
-  items: {
-    // Dummy data, delete later
-    1: {
-      quantity: 2,
-      price: 10
-    }
-  },
+  items: {},
   total: 0
 };
 
@@ -61,13 +55,22 @@ export default function filters(state = initialState, action: BasketActionTypes)
 
       // @TODO: Validation to prevent quantity going below zero
       const updatedQuantity = existingItem.quantity - quantity;
-      const newItems = {...state.items};
+      const newItems = {
+        ...state.items,
+        [productId]: {
+          quantity: updatedQuantity,
+          price
+        }
+      };
+
       if (updatedQuantity <= 0) {
         delete newItems[productId];
       }
 
+      const newTotal = state.total - (quantity * price);
+
       return {
-        total: state.total - (quantity * price),
+        total: (newTotal > 0) ?  newTotal : 0,
         items: newItems
       };
     }

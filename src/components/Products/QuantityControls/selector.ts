@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect';
 
 import { AppState } from './../../../reducers';
-import { ProductsListItemProps } from '.';
+import { QuantityControlsProps } from '.';
 
 const getBasket = (state: AppState) => state.basket;
-const getProductId = (_ : AppState, props: ProductsListItemProps) => props.product.id
+const getProductId = (_ : AppState, props: QuantityControlsProps) => props.product.id;
 
 export default createSelector(
   [getBasket, getProductId],
